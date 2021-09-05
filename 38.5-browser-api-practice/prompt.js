@@ -1,10 +1,8 @@
 // incomplete
-const askMoney = (num) => {
+const askMoney = () => {
     const money = prompt('How much money do you have ?');
-    if (money === true) {
-        const result = num + 200;
-        return result;
+    if (money) {
+        const result = parseFloat(money) + 200;
+        console.log(result);
     }
 };
-//const total = askMoney(100);
-//console.log(total);
