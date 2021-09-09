@@ -18,6 +18,10 @@ function add(first: number, second: number): number {
     return result;
 }
 const output: number = add(45, 87);
+
+function doubleConsole(number: number): void {
+    console.log(2 * number);
+}
 console.log(honey);
 
 // multi purpose
