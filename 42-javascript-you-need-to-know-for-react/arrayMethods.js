@@ -1,4 +1,5 @@
 // 42-3 Array Methods Map Filter Find Foreach
+// Array Methods
 const products = [
     { name: 'laptop', price: 3200, brand: 'lenovo', color: 'silver' },
     { name: 'phone', price: 7000, brand: 'iphone', color: 'golden' },
@@ -26,4 +27,4 @@ const specificName = products.filter((p) => p.name.includes('n'));
 
 //4. find
 const special = products.find((p) => p.name.includes('n'));
-console.log(special);
+//console.log(special);
