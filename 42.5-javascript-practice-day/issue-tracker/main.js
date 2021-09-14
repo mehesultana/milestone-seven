@@ -21,11 +21,13 @@ function submitIssue(e) {
     e.preventDefault();
 }
 
-const closeIssue = (id) => {
+const setStatusClosed = (id) => {
     const issues = JSON.parse(localStorage.getItem('issues'));
-    const currentIssue = issues.find((issue) => issue.id === id);
+    const currentIssue = issues.find((issue) => issue.id == id);
+    console.log(currentIssue);
     currentIssue.status = 'Closed';
     localStorage.setItem('issues', JSON.stringify(issues));
+
     fetchIssues();
 };
 
@@ -44,13 +46,18 @@ const fetchIssues = () => {
         const { id, description, severity, assignedTo, status } = issues[i];
 
         issuesList.innerHTML += `<div class="well">
-                              <h6>Issue ID: ${id} </h6>
-                              <p><span class="label label-info"> ${status} </span></p>
-                              <h3> ${description} </h3>
-                              <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
-                              <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
-                              <a href="#" onclick="setStatusClosed(${id})" class="btn btn-warning">Close</a>
-                              <a href="#" onclick="deleteIssue(${id})" class="btn btn-danger">Delete</a>
-                              </div>`;
+                            <h6>Issue ID: ${id} </h6>
+                            <p><span class="label label-info"> ${status} </span></p>
+                            <h3 id="issue-description"> ${description} </h3>
+                            <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
+                            <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
+                            <a href="#" onclick="setStatusClosed(${id})" class="btn btn-warning">Close</a>
+                            <a href="#" onclick="deleteIssue(${id})" class="btn btn-danger">Delete</a>
+                            </div>`;
+        if (issues.status === 'Closed') {
+            const closeIssus = document.getElementById('issue-description');
+            const result = closeIssus.strike();
+            closeIssus.innerHTML = result;
+        }
     }
 };
